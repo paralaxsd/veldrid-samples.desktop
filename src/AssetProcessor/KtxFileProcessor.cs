@@ -1,5 +1,7 @@
 ﻿using AssetPrimitives;
+#if NETCOREAPP2_0
 using SampleBase;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

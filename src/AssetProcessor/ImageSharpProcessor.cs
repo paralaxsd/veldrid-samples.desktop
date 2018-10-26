@@ -2,14 +2,19 @@
 using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using SixLabors.ImageSharp.Processing.Transforms;
-using SixLabors.ImageSharp.Processing.Transforms.Resamplers;
+
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Veldrid;
 using AssetPrimitives;
+#if NETCOREAPP2_0
+using SixLabors.ImageSharp.Processing.Transforms;
+using SixLabors.ImageSharp.Processing.Transforms.Resamplers;
+#else
+using SixLabors.ImageSharp.Processing.Processors.Transforms;
+#endif
 
 namespace AssetProcessor
 {

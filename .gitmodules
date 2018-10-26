@@ -1,0 +1,3 @@
+[submodule "submodules/veldrid.desktop"]
+	path = submodules/veldrid.desktop
+	url = https://github.com/paralaxsd/veldrid.desktop.git

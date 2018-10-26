@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68FC63BC-6B4E-497C-9324-54FF10093542}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SampleBase.Desktop</RootNamespace>
+    <AssemblyName>SampleBase.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\..\submodules\veldrid.desktop\submodules\System.Runtime.CompilerServices.Unsafe.Desktop\build\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationWindow.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="InputTracker.cs" />
+    <Compile Include="KtxFile.cs" />
+    <Compile Include="SampleApplication.cs" />
+    <Compile Include="SamplePlatformType.cs" />
+    <Compile Include="VeldridStartupWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\submodules\veldrid.desktop\src\Veldrid.SDL2\Veldrid.SDL2.Desktop.csproj">
+      <Project>{54d8528f-e09e-4ede-b387-3e220a702de9}</Project>
+      <Name>Veldrid.SDL2.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\submodules\veldrid.desktop\src\Veldrid.StartupUtilities\Veldrid.StartupUtilities.Desktop.csproj">
+      <Project>{a2c3f778-2769-4fe8-acc6-c7f0ea4a24a6}</Project>
+      <Name>Veldrid.StartupUtilities.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\submodules\veldrid.desktop\src\Veldrid.Utilities\Veldrid.Utilities.Desktop.csproj">
+      <Project>{54004692-eb69-405c-b06c-36cd089c0571}</Project>
+      <Name>Veldrid.Utilities.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\submodules\veldrid.desktop\src\Veldrid\Veldrid.Desktop.csproj">
+      <Project>{34ed4c14-10ac-4f16-b198-6991e631b895}</Project>
+      <Name>Veldrid.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\submodules\veldrid.desktop\submodules\nativelibraryloader.desktop\NativeLibraryLoader\NativeLibraryloader.Desktop.csproj">
+      <Project>{ad90cd49-48a4-4d48-853d-0f6c25ea1c1d}</Project>
+      <Name>NativeLibraryloader.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AssetPrimitives\AssetPrimitives.Desktop.csproj">
+      <Project>{edd58ac9-456f-438d-a17f-97b8c9c615fe}</Project>
+      <Name>AssetPrimitives.Desktop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
