@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ShaderOutputPath>$(BaseIntermediateOutputPath)</ShaderOutputPath>
+    <ShaderContentIncludePath>Shaders</ShaderContentIncludePath>
+    <ListAllShaderPaths>true</ListAllShaderPaths>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5EBBAA5C-86C8-4996-B92E-7253F5C72C56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnimatedMesh</RootNamespace>
+    <AssemblyName>AnimatedMesh.Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AssimpNet, Version=4.1.0.0, Culture=neutral, PublicKeyToken=7c35138f0d61254b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AssimpNet.4.1.0-rc2\lib\net40\AssimpNet.dll</HintPath>
+    </Reference>
+    <Reference Include="ShaderGen.Primitives, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ShaderGen.Primitives.1.2.155-beta2-g562791ab55\lib\netstandard2.0\ShaderGen.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\..\..\submodules\veldrid.desktop\submodules\System.Runtime.CompilerServices.Unsafe.Desktop\build\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\Model.cs">
+      <Link>Model.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\RawList.cs">
+      <Link>RawList.cs</Link>
+    </Compile>
+    <Compile Include="AnimatedMesh.cs" />
+    <Compile Include="AnimatedVertex.cs" />
+    <Compile Include="BoneAnimInfo.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Shaders\Animated.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\assets\models\goblin.dae">
+      <Link>goblin.dae</Link>
+      <LogicalName>goblin.dae</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\assets\textures\goblin_bc3_unorm.ktx">
+      <Link>goblin_bc3_unorm.ktx</Link>
+      <LogicalName>goblin_bc3_unorm.ktx</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\submodules\veldrid.desktop\src\Veldrid.SDL2\Veldrid.SDL2.Desktop.csproj">
+      <Project>{54d8528f-e09e-4ede-b387-3e220a702de9}</Project>
+      <Name>Veldrid.SDL2.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\submodules\veldrid.desktop\src\Veldrid\Veldrid.Desktop.csproj">
+      <Project>{34ed4c14-10ac-4f16-b198-6991e631b895}</Project>
+      <Name>Veldrid.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AssetPrimitives\AssetPrimitives.Desktop.csproj">
+      <Project>{edd58ac9-456f-438d-a17f-97b8c9c615fe}</Project>
+      <Name>AssetPrimitives.Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SampleBase\SampleBase.Desktop.csproj">
+      <Project>{68fc63bc-6b4e-497c-9324-54ff10093542}</Project>
+      <Name>SampleBase.Desktop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\ShaderGen.Build.1.2.155-beta2-g562791ab55\build\ShaderGen.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\ShaderGen.Build.1.2.155-beta2-g562791ab55\build\ShaderGen.Build.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AssimpNet.4.1.0-rc2\build\AssimpNet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AssimpNet.4.1.0-rc2\build\AssimpNet.targets'))" />
+  </Target>
+  <Target Name="IncludeGeneratedShaderEmbeddedResource" AfterTargets="AssignTargetPaths" Condition="'$(ShaderContentIncludePath)' != ''">
+    <ItemGroup>
+      <EmbeddedResource Include="@(GeneratedShader)">
+        <LogicalName>%(FileName)%(Extension)</LogicalName>
+      </EmbeddedResource>
+    </ItemGroup>
+  </Target>
+  <Import Project="..\..\packages\ShaderGen.Build.1.2.155-beta2-g562791ab55\build\ShaderGen.Build.targets" Condition="Exists('..\..\packages\ShaderGen.Build.1.2.155-beta2-g562791ab55\build\ShaderGen.Build.targets')" />
+  <Import Project="..\..\packages\AssimpNet.4.1.0-rc2\build\AssimpNet.targets" Condition="Exists('..\..\packages\AssimpNet.4.1.0-rc2\build\AssimpNet.targets')" />
+</Project>
